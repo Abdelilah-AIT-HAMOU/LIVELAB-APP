@@ -6,31 +6,11 @@
 */
 import { useState, useEffect } from 'react'
 import './App.css'
-import DashboardLayoutBasic from './componenets/DashboardLayoutBasic';
-
-function App() {
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import DashboardLayoutBranding from "./componenets/DashboardLayoutBranding"
+import { Container } from '@mui/material';
+ function App() {
   const [isConnected, setIsConnected] = useState()
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/api/data');
-        const result = await response.json();
-
-        if (result.status === 'success') {
-          setData(result.data);
-        } else {
-          console.error('Error fetching data:', result.message);
-        }
-      } catch (err) {
-        console.error('Error:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const checkingConnection = (isConnected) => {
     if (isConnected == undefined) {
@@ -42,19 +22,21 @@ function App() {
     }
 
   }
-  const [activeMenu, setActiveMenu] = useState('DISP');
 
-  const handleMenuClick = (menu) => {
-    setActiveMenu(menu);
-  };
 
 
   return (
-    <>
+    <Container> 
+      <Router>
       <div className="app">
-        <DashboardLayoutBasic />
+        <Routes>
+          <Route path="/" element={<DashboardLayoutBranding></DashboardLayoutBranding>}/>
+ 
+        </Routes>
     </div>
-    </>
+    </Router>
+    </Container>
+    
   )
 }
 

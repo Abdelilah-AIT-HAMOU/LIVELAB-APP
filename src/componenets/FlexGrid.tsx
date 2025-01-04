@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import { DataGrid } from '@mui/x-data-grid';
 import  { useEffect, useState } from 'react';
-import DisableElevation from './common/DisableElevation';
+import DisableElevation from './common/Mybutton';
 
 export default function FlexGrid() {
     const [rows, setRows] = useState([]);
@@ -54,7 +54,8 @@ export default function FlexGrid() {
     ];
 
   return (
-      <Box sx={{ width: '100%' }}>
+
+      <Box sx={{ width: '90%' }}>
       <Stack direction="row" spacing={1} sx={{ mb: 1 }}>
         <Button size="small" onClick={removeRow} disabled={nbRows <= 0}>
           Remove a row
@@ -66,7 +67,7 @@ export default function FlexGrid() {
           Show All Rows
         </Button>
       </Stack>
-      <div style={{ height: 400, width: '100%' }}>
+      <div style={{ height: 600, width: '100%' }}>
         <DataGrid
           rows={rows.slice(0, nbRows)} // Limit rows based on nbRows
           columns={columns}
@@ -75,7 +76,6 @@ export default function FlexGrid() {
         />
       </div>
       <br></br>
-      <DisableElevation></DisableElevation>
     </Box>
   );
 }
