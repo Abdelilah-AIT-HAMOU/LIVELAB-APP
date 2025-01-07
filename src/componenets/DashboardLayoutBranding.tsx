@@ -25,7 +25,7 @@ const NAVIGATION = [
   },
   {
     segment: 'dashboard',
-    title: 'display employees',
+    title: 'Display Employees',
    // icon: <DashboardIcon />,
   },
   {
@@ -35,7 +35,7 @@ const NAVIGATION = [
   },
   {
     segment: 'Upload',
-    title: 'upload',
+    title: 'Upload',
    // icon: <ShoppingCartIcon />,
   },
   {
@@ -111,15 +111,15 @@ function DemoPageContent({ pathname }: { pathname: string }) {
           <>
             <Grid container spacing={3}>
               <Mybutton
-                buttonName='Add'
+                buttonName='INSERT'
                 onClick={() => handleButtonClick('add')}
               />
               <Mybutton
-                buttonName='alter'
+                buttonName='UPDATE'
                 onClick={() => handleButtonClick('alter')}
               />
               <Mybutton
-                buttonName='drop'
+                buttonName='DELETE'
                 onClick={() => handleButtonClick('drop')}
               />
             </Grid>
