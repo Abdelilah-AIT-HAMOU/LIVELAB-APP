@@ -6,62 +6,57 @@ import { AppProvider, Navigation, Router } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
 import FlexGrid from './FlexGrid';
-import Chip from '@mui/material/Chip';
 import UploadingPage from './UpladingPage';
 import UpdateRecordsForm from './UpdateRecordsForm';
 import Grid from '@mui/material/Grid2';
 import Mybutton from './common/Mybutton';
-
-import AnalyticsPage from './features/AnalyticsPage';
 import AlterTable from './features/AlterTable';
 import DropRecord from './features/DropRecord';
 import { useState } from 'react';
-import DepartmentPage from './DepartmentPage';
+import { Alert } from '@mui/material';
 
 const NAVIGATION = [
   {
-    kind: "header",
+    kind: 'header' as const,
     title: 'Employees',
   },
   {
+    kind: 'page' as const,
     segment: 'dashboard',
-    title: 'display employees',
+    title: 'Display Employees',
    // icon: <DashboardIcon />,
   },
   {
+    kind: 'page' as const,
     segment: 'UpdateRecords',
     title: 'Update Records',
    // icon: <ShoppingCartIcon />,
   },
   {
-    segment: 'Upload',
-    title: 'upload',
-   // icon: <ShoppingCartIcon />,
+    kind: 'divider' as const,
   },
   {
-    kind: 'divider',
-  },
-  {
-    kind: "header",
+    kind: 'header' as const,
     title: 'Departments',
   },
   {
+    kind: 'page' as const,
     segment: 'Departments',
     title: 'Departments',
-    action: <Chip label={"v2"} color="primary" size="small" />,
-  },
-
-  {
-    kind: "divider",
+   // action: <Chip label={"v2"} color="primary" size="small" />,
   },
   {
-    kind: "header",
+    kind: "divider" as const,
+  },
+  {
+    kind: 'header' as const,
     title: 'Analytics',
   },
   {
+    kind: 'page' as const,
     segment: 'Analytics',
     title: 'Analytics',
-    action: <Chip label={"v3"} color="primary" size="small" />,
+   // action: <Chip label={"v3"} color="primary" size="small" />,
   },
 ];
 
@@ -127,9 +122,11 @@ function DemoPageContent({ pathname }: { pathname: string }) {
           </>
         );
       case '/Analytics':
-        return <AnalyticsPage />;
+        return <Alert severity="error">Error: this page is Not working , update the database.</Alert>;
+        // <AnalyticsPage />;
         case '/Departments':
-          return <DepartmentPage/>
+          return <Alert severity="error">Error: this page is Not working , update the database.</Alert>;
+          //<DepartmentPage/>
       default:
         return <Typography>No content available for {pathname}</Typography>;
     }
@@ -152,10 +149,6 @@ function DemoPageContent({ pathname }: { pathname: string }) {
 }
 
 interface DemoProps {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * Remove this when copying and pasting into your project.
-   */
   window?: () => Window;
 }
 

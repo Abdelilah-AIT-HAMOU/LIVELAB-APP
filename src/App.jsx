@@ -9,8 +9,30 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DashboardLayoutBranding from "./componenets/DashboardLayoutBranding"
 import { Container } from '@mui/material';
- function App() {
+
+function App() {
   const [isConnected, setIsConnected] = useState()
+  useEffect(() => {
+    const checkConnection = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/api/connection/status');
+        const data = await response.json();
+
+        console.log(data);
+
+        if (data.status === 'ok') {
+          setIsConnected(true);
+        } else {
+          setIsConnected(false);
+        }
+      } catch (error) {
+        console.error('Error fetching connection status:', error);
+        setIsConnected(false);
+      }
+    };
+
+    checkConnection();
+  }, []);
 
   const checkingConnection = (isConnected) => {
     if (isConnected == undefined) {
@@ -22,16 +44,15 @@ import { Container } from '@mui/material';
     }
 
   }
-
-
+  console.log('isConnected:', isConnected);
 
   return (
     <Container> 
-      <Router>
+       <h1>{checkingConnection(isConnected)}</h1>
+       <Router>
       <div className="app">
         <Routes>
           <Route path="/" element={<DashboardLayoutBranding></DashboardLayoutBranding>}/>
- 
         </Routes>
     </div>
     </Router>
