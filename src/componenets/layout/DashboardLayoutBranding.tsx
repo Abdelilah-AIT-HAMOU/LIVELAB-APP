@@ -6,15 +6,16 @@ import { AppProvider, Navigation, Router } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
 import FlexGrid from './FlexGrid';
-import UploadingPage from './UpladingPage';
-import UpdateRecordsForm from './UpdateRecordsForm';
+import UploadingPage from '../common/UpladingPage';
+import UpdateRecordsForm from '../common/UpdateRecordsForm';
 import Grid from '@mui/material/Grid2';
-import Mybutton from './common/Mybutton';
-import AlterTable from './features/AlterTable';
-import DropRecord from './features/DropRecord';
+import Mybutton from '../common/Mybutton';
+import AlterTable from '../features/AlterTable';
+import DropRecord from '../features/DropRecord';
 import { useState } from 'react';
 import { Alert } from '@mui/material';
-
+import AnalyticsPage from '../features/AnalyticsPage';
+import DepartmentPage from './DepartmentPage';
 const NAVIGATION = [
   {
     kind: 'header' as const,
@@ -122,11 +123,13 @@ function DemoPageContent({ pathname }: { pathname: string }) {
           </>
         );
       case '/Analytics':
-        return <Alert severity="error">Error: this page is Not working , update the database.</Alert>;
-        // <AnalyticsPage />;
+        return <AnalyticsPage />;
+      // <Alert severity="error">Error: this page is Not working , update the database.</Alert>;
+
         case '/Departments':
-          return <Alert severity="error">Error: this page is Not working , update the database.</Alert>;
-          //<DepartmentPage/>
+          return <DepartmentPage/>;
+          // <Alert severity="error">Error: this page is Not working , update the database.</Alert>;
+
       default:
         return <Typography>No content available for {pathname}</Typography>;
     }

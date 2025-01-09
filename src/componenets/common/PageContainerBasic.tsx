@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 
-import OutlinedCard from './common/OutlinedCard';
+import OutlinedCard from './OutlinedCard';
 
 const NAVIGATION: Navigation = [
   {

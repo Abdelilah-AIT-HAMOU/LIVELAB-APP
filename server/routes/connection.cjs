@@ -4,36 +4,86 @@
 ** All rights reserved
 ** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 */
-/* eslint-env node */
+
+// --------------------- ORDS APIs---------------------------------------
+
 const express = require('express');
 const router = express.Router();
+require('dotenv').config(); // To read .env variables
 
-// Require controller module
-const connectionController = require('../utils/rest-services/connection.cjs');
+// env variables
+const BASE_URL = process.env.BASE_URL;
+const DATABASE_USERNAME = process.env.DB_USERNAME;
 
-// Get connection status
-router.get('/status', async (req, res, next) => {
-    try {
-        const connectionStatus = await connectionController.getStatus();
-        res.send(connectionStatus);
-        next();
-    } catch (error) {
-        next(error);
-    }
-});
+const getTableUrl = (tableName) => `${BASE_URL}${DATABASE_USERNAME}/${tableName}`;
 
-// New route to fetch data
-router.get('/data', async (req, res, next) => {
-    try {
-        const query = 'SELECT * FROM ABDELILAH.COUNTRIES'; // Replace with your actual table name
-        const data = await connectionController.fetchData(query);
-        res.json({ status: 'success', data });
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        res.status(500).json({ status: 'error', message: 'Error fetching data' });
-        next(error);
-    }
+const tables = ['employees', 'departments', 'attendance', 'performancereviews'];
+
+tables.forEach((table) => {
+    // GET
+    router.get(`/${table}`, async (req, res) => {
+        try {
+            const response = await fetch(getTableUrl(table));
+            const data = await response.json();
+            res.status(200).json(data);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // POST 
+    router.post(`/${table}`, async (req, res) => {
+        try {
+            const response = await fetch(getTableUrl(table), {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(req.body),
+            });
+            const data = await response.json();
+            res.status(201).json(data);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // GET : by ID
+    router.get(`/${table}/:id`, async (req, res) => {
+        try {
+            const response = await fetch(`${getTableUrl(table)}/${req.params.id}`);
+            const data = await response.json();
+            res.status(200).json(data);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // PUT : Update  by ID
+    router.put(`/${table}/:id`, async (req, res) => {
+        try {
+            const response = await fetch(`${getTableUrl(table)}/${req.params.id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(req.body),
+            });
+            const data = await response.json();
+            res.status(200).json(data);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // DELETE by ID
+    router.delete(`/${table}/:id`, async (req, res) => {
+        try {
+            const response = await fetch(`${getTableUrl(table)}/${req.params.id}`, {
+                method: 'DELETE',
+            });
+            const data = await response.json();
+            res.status(200).json(data);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
 });
 
 module.exports = router;
-

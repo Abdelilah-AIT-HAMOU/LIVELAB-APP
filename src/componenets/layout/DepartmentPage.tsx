@@ -2,11 +2,10 @@ import Grid from '@mui/material/Grid2';
 import useStatenReact, { useEffect, useState } from 'react';
  import { Alert, Box, Paper, useTheme } from '@mui/material';
 import { AppProvider } from '@toolpad/core/AppProvider';
-import DepartementCards from './common/DepartementCards';
-import AlterTable from './features/AlterTable';
+import DepartementCards from '../common/DepartementCards';
 import { DataGrid, GridRowSelectionModel } from '@mui/x-data-grid';
 import React from 'react';
-import OpenChart from './charts/OpenChart';
+import OpenChart from '../charts/OpenChart';
 
 function DepartmentPage() {
      const theme = useTheme();
@@ -17,7 +16,7 @@ function DepartmentPage() {
       const fetchData = async () => {
         try {
           const response = await fetch(
-            'https://g7775ce87bebf43-sqlcllivelabs.adb.eu-amsterdam-1.oraclecloudapps.com/ords/admin/departments/'          );
+            'https://g7775ce87bebf43-sqlcllivelabs.adb.eu-amsterdam-1.oraclecloudapps.com/ords/admin/departments/');
           if (!response.ok) {
             throw new Error('Failed to fetch data');
           }

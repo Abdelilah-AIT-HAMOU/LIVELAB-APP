@@ -7,7 +7,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import DashboardLayoutBranding from "./componenets/DashboardLayoutBranding"
+import DashboardLayoutBranding from "./componenets/layout/DashboardLayoutBranding"
 import { Container } from '@mui/material';
 
 function App() {
@@ -47,8 +47,7 @@ function App() {
   console.log('isConnected:', isConnected);
 
   return (
-    <Container> 
-       <h1>{checkingConnection(isConnected)}</h1>
+    <Container>
        <Router>
       <div className="app">
         <Routes>
@@ -57,7 +56,6 @@ function App() {
     </div>
     </Router>
     </Container>
-    
   )
 }
 

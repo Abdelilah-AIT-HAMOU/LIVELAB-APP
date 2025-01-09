@@ -3,13 +3,9 @@ import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 function DepartementCards() {
         const theme = useTheme();
 
@@ -20,9 +16,9 @@ function DepartementCards() {
           <CardContent sx={{ flex: '1 0 auto' }}>
 
           <IconButton aria-label="previous">
-              {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+              {theme.direction === 'rtl' ? <KeyboardDoubleArrowUpIcon /> : <KeyboardDoubleArrowUpIcon />}
             </IconButton>
-            <Typography component="div" variant="h5"> BLA BlA 1 ....... </Typography>
+            <Typography component="div" variant="h5"> BLA BLA  </Typography>
             <Typography
               variant="subtitle1"
               component="div"

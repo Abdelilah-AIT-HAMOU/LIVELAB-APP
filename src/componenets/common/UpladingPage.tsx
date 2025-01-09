@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
 import React from 'react';
-import Uploadbutton from './common/Uploadbutton';
+import Uploadbutton from './Uploadbutton';
 import PageContainerBasic from './PageContainerBasic';
-import OutlinedCard from './common/OutlinedCard';
+import OutlinedCard from './OutlinedCard';
 
 
 function UploadingPage() {
