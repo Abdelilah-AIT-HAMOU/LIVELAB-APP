@@ -129,8 +129,6 @@ export default function AlterTable() {
         severity: 'success'
       });
 
-      // Refresh the data
-      // You might want to call your data fetching function here
     } catch (error) {
       console.error('Failed to update records:', error);
       setFeedback({

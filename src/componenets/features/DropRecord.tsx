@@ -127,7 +127,7 @@ export default function DropRecord() {
           <DataGrid
             rows={rows}
             columns={columns}
-            getRowId={(row) => row.employee_id}
+            getRowId={(row) => row.employee_id}  
             checkboxSelection
             disableRowSelectionOnClick
             onRowSelectionModelChange={setSelectionModel}
