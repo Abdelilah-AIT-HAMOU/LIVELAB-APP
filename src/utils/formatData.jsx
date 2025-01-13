@@ -1,13 +1,12 @@
 export const formatData = (data) => {
   if (data && data.items) {
     return data.items.map(item => {
-      //  remove the 'links' field and others ..
-      const { links, ...filteredItem } = item;
+      const { links, ...filteredItem } = item; //////  remove the 'links' field and others 
       return filteredItem;
     });
   }
   return [];
-};
+}
 
 export const generateColumns = (data) => {
   if (data && data.length > 0) {

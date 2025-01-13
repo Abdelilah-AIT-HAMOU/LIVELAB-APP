@@ -8,7 +8,7 @@ import OutlinedCard from './OutlinedCard';
 function UploadingPage() {
     return (
       <Box>
-         <PageContainerBasic> 
+         <PageContainerBasic>
          </PageContainerBasic>
       </Box>
     );

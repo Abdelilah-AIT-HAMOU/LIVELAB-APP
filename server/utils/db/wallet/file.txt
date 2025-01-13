@@ -1,0 +1,1 @@
+put your wallet in this folder if you want use the app with wallet connection.

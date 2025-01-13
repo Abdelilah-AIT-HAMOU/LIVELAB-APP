@@ -6,7 +6,7 @@ import { AppProvider, Navigation, Router } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
 import FlexGrid from './FlexGrid';
-import UploadingPage from '../common/UpladingPage';
+import UploadingPage from '../common/UploadingPage';
 import UpdateRecordsForm from '../common/UpdateRecordsForm';
 import Grid from '@mui/material/Grid2';
 import Mybutton from '../common/Mybutton';
@@ -111,11 +111,11 @@ function DemoPageContent({ pathname }: { pathname: string }) {
                 onClick={() => handleButtonClick('add')}
               />
               <Mybutton
-                buttonName='alter'
+                buttonName='Update'
                 onClick={() => handleButtonClick('alter')}
               />
               <Mybutton
-                buttonName='drop'
+                buttonName='Delete'
                 onClick={() => handleButtonClick('drop')}
               />
             </Grid>
@@ -168,7 +168,7 @@ export default function DashboardLayoutBranding(props: DemoProps) {
     <AppProvider
       navigation={NAVIGATION}
       branding={{
-        logo: <img src="https://e7.pngegg.com/pngimages/931/769/png-clipart-database-icon-database-free-blue-background-blue-angle-thumbnail.png" />,
+        logo: <img src="../../assets/Q.svg" />,
         title: 'HR MANAGEMENT',
         homeUrl: '/',
       }}

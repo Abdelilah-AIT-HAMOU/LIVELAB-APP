@@ -47,7 +47,6 @@ export default function PageContainerBasic(props: any) {
   const { window } = props;
   const router = useDemoRouter('/Upload');
   const theme = useTheme();
-  // Remove this const when copying and pasting into your project.
   const demoWindow = window ? window() : undefined;
 
   return (
