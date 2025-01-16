@@ -50,8 +50,8 @@ export default function EmployeesPerDepartmentChart() {
     <BarChart
       xAxis={[{ scaleType: 'band', data: chartData.departmentNames }]}
       series={[{ data: chartData.employeeCounts, label: 'Number of Employees', color: '#FFB6C1' }]}
-      width={300}
-      height={200}
+      width={360}
+      height={230}
     />
   );
 }

@@ -8,11 +8,22 @@ import PerformancePieChart from '../charts/PerformanceReview'; // Import the Per
 
 function AnalyticsPage() {
   return (
-    <Paper sx={{ p: 2, width: '800px' }}>
-      <Grid container spacing={3}>
+    <Paper sx={{ p: 2, width: '100%' }}>
+      <Grid container spacing={1}>
         {/* Employees Per Department Chart */}
-        <Grid item xs={12} sm={5}>
-          <Paper sx={{ p: 2, textAlign: 'center' }} elevation={3}>
+        <Grid item xs={12} sm={6}>
+          <Paper
+            sx={{
+              p: 2,
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: 300, // Optional: Set a fixed height
+            }}
+            elevation={3}
+          >
             {/* Title */}
             <Typography variant="h6" component="div" gutterBottom>
               Employees per Department
@@ -23,8 +34,19 @@ function AnalyticsPage() {
         </Grid>
 
         {/* Attendance Chart */}
-        <Grid item xs={12} sm={7}>
-          <Paper sx={{ p: 2, textAlign: 'center' }} elevation={3}>
+        <Grid item xs={12} sm={6}>
+          <Paper
+            sx={{
+              p: 2,
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: 300, // Optional: Set a fixed height
+            }}
+            elevation={3}
+          >
             {/* Title */}
             <Typography variant="h6" component="div" gutterBottom>
               Attendance
@@ -35,8 +57,19 @@ function AnalyticsPage() {
         </Grid>
 
         {/* Performance Score Pie Chart */}
-        <Grid item xs={12} sm={7}>
-          <Paper sx={{ p: 2, textAlign: 'center' }} elevation={3}>
+        <Grid item xs={12}>
+          <Paper
+            sx={{
+              p: 2,
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: 300, // Optional: Set a fixed height
+            }}
+            elevation={3}
+          >
             {/* Title */}
             <Typography variant="h6" component="div" gutterBottom>
               Performance Score Distribution
