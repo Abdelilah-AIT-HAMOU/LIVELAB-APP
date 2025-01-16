@@ -17,6 +17,8 @@ export default function BasicPie() {
   const presentCount = countOccurrences(status || [], 'Present');
   const absentCount = countOccurrences(status || [], 'Absent');
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <PieChart

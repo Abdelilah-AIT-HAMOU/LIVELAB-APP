@@ -8,25 +8,26 @@ import Typography from '@mui/material/Typography';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 
 // Define prop types
-type DepartementCardsProps = {
+type DepartmentCardsProps = {
   title: string;
   value: number;
+  sx?: object; // Add sx as a prop to dynamically style the Card
 };
 
-function DepartementCards({ title, value }: DepartementCardsProps) {
+function DepartmentCards({ title, value, sx }: DepartmentCardsProps) {
   const theme = useTheme();
 
   return (
-    <Card sx={{ display: 'flex' }}>
+    <Card sx={{ display: 'flex', ...sx }}> {/* Apply sx dynamically */}
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h6">
+          <Typography component="div" variant="h6" sx={{ color: 'text.secondary' }}>
             {title}
           </Typography>
           <Typography
             variant="h6"
             component="div"
-            sx={{ color: 'text.secondary' }}
+            sx={{ color: 'text.primary' }}
           >
             {value}
           </Typography>
@@ -39,4 +40,4 @@ function DepartementCards({ title, value }: DepartementCardsProps) {
   );
 }
 
-export default DepartementCards;
+export default DepartmentCards;

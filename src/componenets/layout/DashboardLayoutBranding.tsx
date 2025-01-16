@@ -145,7 +145,7 @@ function DemoPageContent({ pathname }: { pathname: string }) {
         textAlign: 'center',
       }}
     >
-      <Typography>Dashboard content for {pathname}</Typography>
+      <Typography sx={{ fontWeight: 'bold' }}>Dashboard content for {pathname}</Typography>
       {renderContent()}
     </Box>
   );
