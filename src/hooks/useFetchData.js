@@ -10,11 +10,12 @@ const useFetchData = (tableName) => {
       try {
         const response = await fetch(`http://localhost:3000/api/connection/${tableName}/`);
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error(`Failed to fetch: ${response.statusText}`);
         }
         const result = await response.json();
         setData(result);
       } catch (error) {
+        console.error('Fetch error:', error);
         setError(error);
       } finally {
         setLoading(false);
@@ -24,29 +25,29 @@ const useFetchData = (tableName) => {
     fetchData();
   }, [tableName]);
 
-
-
-const postData = async (dataToPost) => {
-  try {
-    const response = await fetch(`http://localhost:3000/api/connection/${tableName}/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dataToPost),
-    });
-    if (!response.ok) {
-      throw new Error('Failed to post data');
+  const postData = async (dataToPost) => {
+    console.log('Data to post:', dataToPost);
+    try {
+      const response = await fetch(`http://localhost:3000/api/connection/${tableName}/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToPost),
+      });
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('API error:', errorData);
+        throw new Error(errorData.message || 'Failed to post data');
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Post error:', error);
+      throw error;
     }
-    const result = await response.json();
-    return result; // Return the response if the post is successful
-  } catch (error) {
-    setError(error);
-    throw error;
-  }
-};
+  };
 
-return { data, loading, error, postData };
+  return { data, loading, error, postData };
 };
 
 export default useFetchData;

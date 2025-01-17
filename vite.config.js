@@ -4,15 +4,26 @@
 ** All rights reserved
 ** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
 */
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig, loadEnv } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    proxy: {
-        '/api': 'http://localhost:3003/'
-    }
-  }
-})
+export default defineConfig(({ mode }) => {
+
+  const env = loadEnv(mode, process.cwd());
+
+  return {
+    plugins: [react()],
+    server: {
+      proxy: {
+        '/api': env.VITE_API_URL,
+      },
+      port: 5173,
+    },
+    define: {
+      'process.env': env,
+    },
+    build: {
+      outDir: 'dist',
+    },
+  };
+});

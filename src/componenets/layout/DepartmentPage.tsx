@@ -40,22 +40,20 @@ function DepartmentPage() {
             <DepartementCards title="Unique Locations" value={uniqueLocations} />
           </Grid>
           <Grid size={3}>
-            <DepartementCards title="Other Stat" value={0} /> {/* Customize as needed */}
+            <DepartementCards title="Other Stat" value={0} /> {/* not implim yet */}
           </Grid>
         </Grid>
       </Paper>
 
       <Paper sx={{ p: 3, width: '100%' }}>
-        <Grid container spacing={3} sx={{ display: 'flex', alignItems: 'flex-start' }}>
-          <Grid size={8}>
-            <Box sx={{ height: 300, width: '100%', maxWidth: 600 }}>
+            <Box sx={{ height: 300, width: '100%', maxWidth: 1000 }}>
               <DataGrid
                 rows={rows.map((row, index) => ({ ...row, id: index }))}
-                rowHeight={20}
+                rowHeight={50}
                 columns={Object.keys(rows[0] || {}).map((key) => ({
                   field: key,
                   headerName: key.replace(/_/g, ' ').toUpperCase(),
-                  width: 100,
+                  width: 150,
                 }))}
                 disableRowSelectionOnClick
                 onRowSelectionModelChange={(newSelectionModel) => {
@@ -63,8 +61,6 @@ function DepartmentPage() {
                 }}
               />
             </Box>
-          </Grid>
-        </Grid>
       </Paper>
     </AppProvider>
   );
