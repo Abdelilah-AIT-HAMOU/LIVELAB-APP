@@ -1,10 +1,10 @@
 {
-  "project" : "hr-management",
+  "project" : "demo",
   "sqlcl" : {
-    "connectionName" : "HR_MGT_DEV",
+    "connectionName" : "",
     "version" : "25.1.0.0"
   },
-  "schemas" : [ ],
+  "schemas" : [ "ABDELILAH" ],
   "lastReleaseVersion" : "",
   "export" : {
     "format" : {

@@ -123,8 +123,8 @@ function DemoPageContent({ pathname }: { pathname: string }) {
           </>
         );
       case '/Analytics':
-        return <AnalyticsPage />;
-      // <Alert severity="error">Error: this page is Not working , update the database.</Alert>;
+        return  <Alert severity="error">Error: this page is Not working , update the database.</Alert>;
+       // <AnalyticsPage />;
 
         case '/Departments':
           return <DepartmentPage/>;
