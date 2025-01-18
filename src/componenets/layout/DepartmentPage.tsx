@@ -31,13 +31,13 @@ function DepartmentPage() {
       <Paper sx={{ p: 3, width: '100%' }}>
         <Grid container spacing={3}>
           <Grid size={3}>
-            <DepartementCards title="Total Departments" value={totalDepartments} />
+            <DepartementCards title="Total Departments" value={totalDepartments} color="#ADF0E6"/>
           </Grid>
           <Grid size={3}>
-            <DepartementCards title="Departments with Managers" value={departmentsWithManagers} />
+            <DepartementCards title="Departments with Managers" value={departmentsWithManagers} color="rgba(255, 204, 204, 1)"/>
           </Grid>
           <Grid size={3}>
-            <DepartementCards title="Unique Locations" value={uniqueLocations} />
+            <DepartementCards title="Unique Locations" value={uniqueLocations} color="#90EE90"/>
           </Grid>
           <Grid size={3}>
             <DepartementCards title="Other Stat" value={0} /> {/* not implim yet */}

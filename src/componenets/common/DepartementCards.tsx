@@ -3,20 +3,28 @@ import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
 // Define prop types
 type DepartementCardsProps = {
   title: string;
   value: number;
+  color?: string; // Optional color prop
 };
 
-function DepartementCards({ title, value }: DepartementCardsProps) {
+function DepartementCards({ title, value, color="#ADD8E6"}: DepartementCardsProps) {
   const theme = useTheme();
 
   return (
-    <Card sx={{ display: 'flex' }}>
+    <Card
+      sx={{
+        display: 'flex',
+        backgroundColor: color, // Use the passed color
+        color: theme.palette.getContrastText(color), // Ensure text is visible
+        borderRadius: 2,
+        boxShadow: 3,
+      }}
+    >
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h6">
@@ -30,9 +38,6 @@ function DepartementCards({ title, value }: DepartementCardsProps) {
             {value}
           </Typography>
         </CardContent>
-
-        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-        </Box>
       </Box>
     </Card>
   );

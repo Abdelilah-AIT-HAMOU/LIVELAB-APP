@@ -168,7 +168,7 @@ export default function DashboardLayoutBranding(props: DemoProps) {
     <AppProvider
       navigation={NAVIGATION}
       branding={{
-        logo: <img src="../../assets/" />,
+        logo: <img src="../../../public/assets/logo-blue.png" />,
         title: 'HR MANAGEMENT',
         homeUrl: '/',
       }}
