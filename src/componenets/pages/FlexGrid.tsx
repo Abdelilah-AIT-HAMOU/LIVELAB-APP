@@ -6,6 +6,7 @@ import  { DataGrid } from '@mui/x-data-grid';
 import  { useState } from 'react';
 import useFetchData from '../../hooks/useFetchData';
 import {generateColumns, formatData } from '../../utils/formatData';
+import { Paper } from '@mui/material';
 
 export default function FlexGrid() {
   const tableName = 'employees';
@@ -29,8 +30,8 @@ export default function FlexGrid() {
   console.log('Rows:', rows);
 
   return (
-
-    <Box sx={{ width: '90%' }}>
+    <Paper sx={{   p: 3,   width: '100%',   border: '1px solid',   borderColor: 'grey.300',   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',   borderRadius: 2, }}>
+    <Box sx={{ width: '100%' }}>
     <Stack direction="row" spacing={1} sx={{ mb: 1 }}>
       <Button size="small" onClick={removeRow} disabled={nbRows <= 0}>
         Remove a row
@@ -42,7 +43,7 @@ export default function FlexGrid() {
         Show All Rows
       </Button>
     </Stack>
-    <div style={{ height: 600, width: '100%' }}>
+    <div style={{ height: 350, width: '100%' }}>
     <DataGrid
        rows={rows|| []}
        columns={columns}
@@ -53,5 +54,6 @@ export default function FlexGrid() {
     </div>
     <br />
   </Box>
+  </Paper>
   );
 }

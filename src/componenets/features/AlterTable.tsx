@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {  Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Paper, Snackbar, TextField, Alert } from '@mui/material';
 import { DataGrid, GridColDef, GridRowSelectionModel } from '@mui/x-data-grid';
-import { AppProvider } from '@toolpad/core';
 import useFetchData from '../../hooks/useFetchData';
 import { formatData, generateColumns } from '../../utils/formatData';
 
@@ -140,8 +139,8 @@ export default function AlterTable() {
   };
 
   return (
-    <AppProvider branding={{ title: 'ACME Inc.' }}>
-      <Paper sx={{ p: 3, width: '100%' }}>
+
+    <Paper sx={{   p: 3,   width: '100%',   border: '1px solid',   borderColor: 'grey.300',   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',   borderRadius: 2, }}>
         <Box sx={{ height: 400, width: '100%' }}>
           <DataGrid
             rows={rows}
@@ -208,6 +207,5 @@ export default function AlterTable() {
           </Alert>
         </Snackbar>
       </Paper>
-    </AppProvider>
   );
 }

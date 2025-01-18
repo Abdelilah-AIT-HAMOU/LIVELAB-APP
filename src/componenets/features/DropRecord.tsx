@@ -121,7 +121,6 @@ export default function DropRecord() {
   }
 
   return (
-    <AppProvider branding={{ title: 'ACME Inc.' }}>
       <Paper sx={{ p: 3, width: '100%' }}>
         <Box sx={{ height: 400, width: '100%' }}>
           <DataGrid
@@ -161,6 +160,5 @@ export default function DropRecord() {
           </Alert>
         </Snackbar>
       </Paper>
-    </AppProvider>
   );
 }

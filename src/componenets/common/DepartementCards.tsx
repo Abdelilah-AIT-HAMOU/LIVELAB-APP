@@ -5,11 +5,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-// Define prop types
 type DepartementCardsProps = {
   title: string;
   value: number;
-  color?: string; // Optional color prop
+  color?: string; 
 };
 
 function DepartementCards({ title, value, color="#ADD8E6"}: DepartementCardsProps) {
@@ -19,8 +18,8 @@ function DepartementCards({ title, value, color="#ADD8E6"}: DepartementCardsProp
     <Card
       sx={{
         display: 'flex',
-        backgroundColor: color, // Use the passed color
-        color: theme.palette.getContrastText(color), // Ensure text is visible
+        backgroundColor: color,
+        color: theme.palette.getContrastText(color), 
         borderRadius: 2,
         boxShadow: 3,
       }}

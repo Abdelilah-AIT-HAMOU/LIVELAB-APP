@@ -1,25 +1,21 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import React, { useState } from 'react';
+import { Box, Typography, Chip, Paper } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import { createTheme } from '@mui/material/styles';
-import { AppProvider, Navigation, Router } from '@toolpad/core/AppProvider';
+import { AppProvider } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { useDemoRouter } from '@toolpad/core/internal';
-import FlexGrid from './FlexGrid';
-import UploadingPage from '../common/UploadingPage';
-import UpdateRecordsForm from '../common/UpdateRecordsForm';
-import Grid from '@mui/material/Grid2';
-import Mybutton from '../common/Mybutton';
-import AlterTable from '../features/AlterTable';
-import DropRecord from '../features/DropRecord';
-import { useState } from 'react';
-import { Chip } from '@mui/material';
-import AnalyticsPage from '../features/AnalyticsPage';
-import DepartmentPage from './DepartmentPage';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SyncIcon from '@mui/icons-material/Sync';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
+import FlexGrid from './FlexGrid';
+import UpdateRecordsForm from '../features/DynamicForm';
+import Mybutton from '../common/Mybutton';
+import AlterTable from '../features/AlterTable';
+import DropRecord from '../features/DropRecord';
+import AnalyticsPage from './AnalyticsPage';
+import DepartmentPage from './DepartmentPage';
 
 const NAVIGATION = [
   {
@@ -30,7 +26,7 @@ const NAVIGATION = [
     kind: 'page' as const,
     segment: 'dashboard',
     title: 'Display Employees',
-    icon: <DashboardIcon />, // Icon for dashboard
+    icon: <DashboardIcon />,
   },
   {
     kind: 'page' as const,
@@ -50,7 +46,7 @@ const NAVIGATION = [
     segment: 'Departments',
     title: 'Departments',
     action: <Chip label={"v2"} color="primary" size="small" />,
-    icon: <ApartmentIcon />, // Icon for departments
+    icon: <ApartmentIcon />, 
   },
   {
     kind: 'divider' as const,
@@ -64,7 +60,7 @@ const NAVIGATION = [
     segment: 'Analytics',
     title: 'Analytics',
     action: <Chip label={"v3"} color="primary" size="small" />,
-    icon: <AnalyticsIcon />, // Icon for analytics
+    icon: <AnalyticsIcon />, 
   },
 ];
 
@@ -107,12 +103,11 @@ function DemoPageContent({ pathname }: { pathname: string }) {
     switch (pathname) {
       case '/dashboard':
         return <FlexGrid />;
-      case '/Upload':
-        return <UploadingPage />;
       case '/UpdateRecords':
         return (
-          <>
-            <Grid container spacing={3}>
+          <Paper sx={{   p: 3,   width: '100%',   border: '1px solid',   borderColor: 'grey.300',   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',   borderRadius: 2}}>
+
+            <Grid  spacing={2} container direction="row" justifyContent="center" alignItems="center" mb={3}> 
               <Mybutton
                 buttonName='Add'
                 onClick={() => handleButtonClick('add')}
@@ -127,7 +122,7 @@ function DemoPageContent({ pathname }: { pathname: string }) {
               />
             </Grid>
             {renderActiveComponent()}
-          </>
+          </Paper>
         );
       case '/Analytics':
         return  <AnalyticsPage />;
@@ -164,14 +159,10 @@ interface DemoProps {
 
 export default function DashboardLayoutBranding(props: DemoProps) {
   const { window } = props;
-
   const router = useDemoRouter('/dashboard');
-
-  // Remove this const when copying and pasting into your project.
   const demoWindow = window !== undefined ? window() : undefined;
 
   return (
-    // preview-start
     <AppProvider
       navigation={NAVIGATION}
       branding={{
@@ -187,6 +178,5 @@ export default function DashboardLayoutBranding(props: DemoProps) {
         <DemoPageContent pathname={router.pathname} />
       </DashboardLayout>
     </AppProvider>
-    // preview-end
   );
 }

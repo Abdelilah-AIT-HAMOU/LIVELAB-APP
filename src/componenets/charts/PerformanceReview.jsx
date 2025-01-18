@@ -8,14 +8,12 @@ export default function PerformancePieChart() {
   const { data, loading, error } = useFetchData(tableName);
   const rows = formatData(data);
   
-  // Categorize performance scores
   const goals_achieved_data = rows.map(item => item.performance_score);
 
   const lowCount = goals_achieved_data.filter(score => score < 4).length;
   const mediumCount = goals_achieved_data.filter(score => score >= 4 && score <= 7).length;
   const highCount = goals_achieved_data.filter(score => score > 7).length;
 
-  // Data for pie chart
   const chartData = [
     { id: 0, value: lowCount, label: 'Low' },
     { id: 1, value: mediumCount, label: 'Medium' },

@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid2';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Paper, Box, useTheme } from '@mui/material';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import DepartementCards from '../common/DepartementCards';
@@ -28,7 +28,7 @@ function DepartmentPage() {
         title: 'ACME Inc.',
       }}
     >
-      <Paper sx={{ p: 3, width: '100%' }}>
+      <Paper sx={{p: 3,width: '100%',border: '1px solid',borderColor: 'grey.300',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',borderRadius: 2 }}>
         <Grid container spacing={3}>
           <Grid size={3}>
             <DepartementCards title="Total Departments" value={totalDepartments} color="#ADF0E6"/>
@@ -45,7 +45,7 @@ function DepartmentPage() {
         </Grid>
       </Paper>
 
-      <Paper sx={{ p: 3, width: '100%' }}>
+      <Paper sx={{p: 3,width: '100%',border: '1px solid',borderColor: 'grey.300',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',borderRadius: 2 }}>
             <Box sx={{ height: 300, width: '100%', maxWidth: 1000 }}>
               <DataGrid
                 rows={rows.map((row, index) => ({ ...row, id: index }))}

@@ -8,7 +8,7 @@ import PerformancePieChart from '../charts/PerformanceReview';
 
 function AnalyticsPage() {
   return (
-    <Paper sx={{ p: 2, width: '100%' }}>
+    <Paper sx={{   p: 3,   width: '100%',   border: '1px solid',   borderColor: 'grey.300',   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',   borderRadius: 2, }}>
       <Grid container spacing={1}>
         {/* Employees Per Department Chart */}
         <Grid item xs={12} sm={6}>
@@ -66,7 +66,7 @@ function AnalyticsPage() {
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
-              height: 300, // Optional: Set a fixed height
+              height: 300, 
             }}
             elevation={3}
           >
