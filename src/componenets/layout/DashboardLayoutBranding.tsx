@@ -13,9 +13,14 @@ import Mybutton from '../common/Mybutton';
 import AlterTable from '../features/AlterTable';
 import DropRecord from '../features/DropRecord';
 import { useState } from 'react';
-import { Alert } from '@mui/material';
+import { Chip } from '@mui/material';
 import AnalyticsPage from '../features/AnalyticsPage';
 import DepartmentPage from './DepartmentPage';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import SyncIcon from '@mui/icons-material/Sync';
+import ApartmentIcon from '@mui/icons-material/Apartment';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+
 const NAVIGATION = [
   {
     kind: 'header' as const,
@@ -25,13 +30,13 @@ const NAVIGATION = [
     kind: 'page' as const,
     segment: 'dashboard',
     title: 'Display Employees',
-   // icon: <DashboardIcon />,
+    icon: <DashboardIcon />, // Icon for dashboard
   },
   {
     kind: 'page' as const,
     segment: 'UpdateRecords',
     title: 'Update Records',
-   // icon: <ShoppingCartIcon />,
+    icon: <SyncIcon />,
   },
   {
     kind: 'divider' as const,
@@ -44,10 +49,11 @@ const NAVIGATION = [
     kind: 'page' as const,
     segment: 'Departments',
     title: 'Departments',
-   // action: <Chip label={"v2"} color="primary" size="small" />,
+    action: <Chip label={"v2"} color="primary" size="small" />,
+    icon: <ApartmentIcon />, // Icon for departments
   },
   {
-    kind: "divider" as const,
+    kind: 'divider' as const,
   },
   {
     kind: 'header' as const,
@@ -57,7 +63,8 @@ const NAVIGATION = [
     kind: 'page' as const,
     segment: 'Analytics',
     title: 'Analytics',
-   // action: <Chip label={"v3"} color="primary" size="small" />,
+    action: <Chip label={"v3"} color="primary" size="small" />,
+    icon: <AnalyticsIcon />, // Icon for analytics
   },
 ];
 
