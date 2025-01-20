@@ -8,7 +8,7 @@ interface MyButtonProps {
 
 export default function Mybutton({ buttonName, onClick }: MyButtonProps) {
   return (
-    <Button variant="contained"  color="primary" onClick={onClick}>
+    <Button variant="contained"   sx={{ backgroundColor: 'green', '&:hover': { backgroundColor: 'darkgreen' } }}    onClick={onClick}>
       {buttonName}
     </Button>
   );
