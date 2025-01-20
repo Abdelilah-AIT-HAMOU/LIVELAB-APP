@@ -10,7 +10,7 @@ const useFetchData = (tableName) => {
       try {
         const response = await fetch(`http://localhost:3000/api/connection/${tableName}/`);
         if (!response.ok) {
-          throw new Error(`Failed to fetch: ${response.statusText}`);
+          throw new Error(`Failed to fetch: ${response.message}`);
         }
         const result = await response.json();
         setData(result);

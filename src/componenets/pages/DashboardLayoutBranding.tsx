@@ -16,6 +16,8 @@ import AlterTable from '../features/AlterTable';
 import DropRecord from '../features/DropRecord';
 import AnalyticsPage from './AnalyticsPage';
 import DepartmentPage from './DepartmentPage';
+import PlaceHolder from '../common/PlaceHolder';
+import DescriptionInfo from '../common/DescriptionInfoAlert';
 
 const NAVIGATION = [
   {
@@ -24,7 +26,7 @@ const NAVIGATION = [
   },
   {
     kind: 'page' as const,
-    segment: 'dashboard',
+    segment: 'Employees-Dashboard',
     title: 'Display Employees',
     icon: <DashboardIcon />,
   },
@@ -101,7 +103,7 @@ function DemoPageContent({ pathname }: { pathname: string }) {
 
   const renderContent = () => {
     switch (pathname) {
-      case '/dashboard':
+      case '/Employees-Dashboard':
         return <FlexGrid />;
       case '/UpdateRecords':
         return (
@@ -124,13 +126,12 @@ function DemoPageContent({ pathname }: { pathname: string }) {
             {renderActiveComponent()}
           </Paper>
         );
-      case '/Analytics':
-        return  <AnalyticsPage />;
-        //<Alert severity="error">Error: this page is Not working , update the database.</Alert>;
-
         case '/Departments':
-          return <DepartmentPage/>;
-          // <Alert severity="error">Error: this page is Not working , update the database.</Alert>;
+          return <PlaceHolder PlaceHolderName={'Departments'}/>
+
+        case '/Analytics':
+        return  <PlaceHolder PlaceHolderName={'Analytics'} />
+       // <AnalyticsPage />;
 
       default:
         return <Typography>No content available for {pathname}</Typography>;
@@ -147,7 +148,7 @@ function DemoPageContent({ pathname }: { pathname: string }) {
         textAlign: 'center',
       }}
     >
-      <Typography>Dashboard content for {pathname}</Typography>
+      <DescriptionInfo DescriptionInfoName={pathname}></DescriptionInfo>
       {renderContent()}
     </Box>
   );
