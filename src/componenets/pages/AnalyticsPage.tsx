@@ -1,3 +1,10 @@
+/*
+**
+** Copyright (c) 2024, Oracle and/or its affiliates.
+** All rights reserved
+**
+*/
+
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';

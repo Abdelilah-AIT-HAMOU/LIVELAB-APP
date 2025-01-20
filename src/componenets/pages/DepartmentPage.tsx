@@ -1,3 +1,10 @@
+/*
+**
+** Copyright (c) 2024, Oracle and/or its affiliates.
+** All rights reserved
+**
+*/
+
 import Grid from '@mui/material/Grid2';
 import { useState } from 'react';
 import { Paper, Box, useTheme } from '@mui/material';

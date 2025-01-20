@@ -1,3 +1,10 @@
+/*
+**
+** Copyright (c) 2024, Oracle and/or its affiliates.
+** All rights reserved
+**
+*/
+
 import { useState, useEffect } from 'react';
 
 const useFetchData = (tableName) => {

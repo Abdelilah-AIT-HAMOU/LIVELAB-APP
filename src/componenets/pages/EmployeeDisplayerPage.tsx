@@ -1,3 +1,11 @@
+/*
+**
+** Copyright (c) 2024, Oracle and/or its affiliates.
+** All rights reserved
+**
+*/
+
+
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -8,7 +16,7 @@ import useFetchData from '../../hooks/useFetchData';
 import {generateColumns, formatData } from '../../utils/formatData';
 import { Paper } from '@mui/material';
 
-export default function FlexGrid() {
+export default function DisplayEmployee() {
   const tableName = 'employees';
   const { data, loading, error } = useFetchData(tableName);
   const [nbRows, setNbRows] = useState(3);

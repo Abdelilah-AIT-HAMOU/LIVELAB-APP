@@ -1,3 +1,10 @@
+/*
+**
+** Copyright (c) 2024, Oracle and/or its affiliates.
+** All rights reserved
+**
+*/
+
 export const formatData = (data) => {
   if (data && data.items) {
     return data.items.map(item => {

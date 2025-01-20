@@ -1,3 +1,10 @@
+/*
+**
+** Copyright (c) 2024, Oracle and/or its affiliates.
+** All rights reserved
+**
+*/
+
 import React, { useState, useEffect } from 'react';
 import { Box, Button, Snackbar, Alert, Paper } from '@mui/material';
 import { DataGrid, GridColDef, GridRowSelectionModel } from '@mui/x-data-grid';

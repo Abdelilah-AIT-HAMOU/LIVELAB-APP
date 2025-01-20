@@ -1,3 +1,10 @@
+/*
+**
+** Copyright (c) 2024, Oracle and/or its affiliates.
+** All rights reserved
+** 
+*/
+
 import * as React from 'react';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';

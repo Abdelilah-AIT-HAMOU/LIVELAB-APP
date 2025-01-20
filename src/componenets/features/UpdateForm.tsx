@@ -1,3 +1,10 @@
+/*
+**
+** Copyright (c) 2024, Oracle and/or its affiliates.
+** All rights reserved
+**
+*/
+
 import React, { useState, useEffect } from 'react';
 import {  Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Paper, Snackbar, TextField, Alert } from '@mui/material';
 import { DataGrid, GridColDef, GridRowSelectionModel } from '@mui/x-data-grid';
@@ -13,7 +20,6 @@ export default function AlterTable() {
   const [editRow, setEditRow] = useState<any>(null);
   const [feedback, setFeedback] = useState<{ open: boolean, message: string, severity: 'success' | 'error' | 'info' | 'warning' }>({ open: false, message: '', severity: 'success' });
 
-  // Sync rows state with fetched data
   useEffect(() => {
     setRows(formatData(data));
   }, [data]);
@@ -53,14 +59,12 @@ export default function AlterTable() {
 
   const handleEditSave = async () => {
     try {
-      // Infer the unique identifier field from the row dynamically
-      const uniqueKey = Object.keys(editRow).find(key => key.toLowerCase().includes('id'));
+       const uniqueKey = Object.keys(editRow).find(key => key.toLowerCase().includes('id'));
       if (!uniqueKey) {
         throw new Error('No unique identifier field found in the row.');
       }
 
-      // Construct the dynamic endpoint URL
-      const endpointUrl = `http://localhost:3000/api/connection/${tableName}/${editRow[uniqueKey]}`;
+       const endpointUrl = `http://localhost:3000/api/connection/${tableName}/${editRow[uniqueKey]}`;
 
       const response = await fetch(endpointUrl, {
         method: 'PUT',
@@ -73,14 +77,12 @@ export default function AlterTable() {
       if (!response.ok) {
         throw new Error('Failed to update record');
       }
-      // Update the local rows dynamically
-      const updatedRows = rows.map((row) =>
+       const updatedRows = rows.map((row) =>
         row[uniqueKey] === editRow[uniqueKey] && typeof row === 'object' && typeof editRow === 'object' ? { ...row, ...editRow } : row
       );
       setRows(updatedRows);
 
-      // Show success feedback
-      setFeedback({
+       setFeedback({
         open: true,
         message: 'Record updated successfully',
         severity: 'success',
@@ -107,22 +109,19 @@ export default function AlterTable() {
 
   const handleBulkUpdate = async () => {
     try {
-      // Create an array of update promises
-      const updatePromises = selectionModel.map(id => 
+       const updatePromises = selectionModel.map(id => 
         fetch(`/api/${tableName}/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ /* your bulk update data here */ }),
+          body: JSON.stringify({ }),
         })
       );
 
-      // Wait for all updates to complete
-      await Promise.all(updatePromises);
+       await Promise.all(updatePromises);
 
-      // Show success message
-      setFeedback({
+       setFeedback({
         open: true,
         message: 'Records updated successfully',
         severity: 'success'
@@ -152,14 +151,12 @@ export default function AlterTable() {
           />
         </Box>
 
-        {/* Edit Dialog */}
-        <Dialog open={editDialog} onClose={handleEditClose}>
+         <Dialog open={editDialog} onClose={handleEditClose}>
           <DialogTitle>Edit Employee</DialogTitle>
           <DialogContent>
             {editRow && Object.keys(editRow).map((field) => {
-              // Skip fields you don't want to edit
-              if (field === 'employee_id' || field === 'actions') return null;
-
+ 
+            if (field === 'employee_id' || field === 'actions') return null;
               return (
                 <TextField
                   key={field}
@@ -180,8 +177,7 @@ export default function AlterTable() {
           </DialogActions>
         </Dialog>
 
-        {/* Bulk Update Button */}
-        <Box sx={{ mt: 2 }}>
+         <Box sx={{ mt: 2 }}>
           <Button 
             variant="contained" 
             color="primary" 
@@ -193,8 +189,7 @@ export default function AlterTable() {
           </Button>
         </Box>
 
-        {/* Feedback Snackbar */}
-        <Snackbar 
+         <Snackbar 
           open={feedback.open} 
           autoHideDuration={6000} 
           onClose={() => setFeedback({ ...feedback, open: false })}

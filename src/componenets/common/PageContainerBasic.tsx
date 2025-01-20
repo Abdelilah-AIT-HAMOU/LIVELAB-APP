@@ -1,3 +1,9 @@
+/*
+**
+** Copyright (c) 2024, Oracle and/or its affiliates.
+** All rights reserved
+** 
+*/
 import * as React from 'react';
 import {  useTheme } from '@mui/material/styles';
 import { AppProvider, Navigation, Router } from '@toolpad/core/AppProvider';

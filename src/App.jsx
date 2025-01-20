@@ -2,11 +2,11 @@
 **
 ** Copyright (c) 2024, Oracle and/or its affiliates.
 ** All rights reserved
-** Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
+**
 */
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import DashboardLayoutBranding from "./componenets/pages/DashboardLayoutBranding"
+import HrDashboard from "./componenets/pages/HrDashboardLayout.tsx"
 import { Container } from '@mui/material';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
        <Router>
       <div className="app">
         <Routes>
-          <Route path="/" element={<DashboardLayoutBranding></DashboardLayoutBranding>}/>
+          <Route path="/" element={<HrDashboard></HrDashboard>}/>
         </Routes>
       </div>
     </Router>
