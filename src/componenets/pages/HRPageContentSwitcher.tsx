@@ -15,6 +15,8 @@ import DropRecord from '../features/DeleteForm';
 import PlaceHolder from '../common/PlaceHolder';
 import DescriptionInfo from '../common/DescriptionInfoAlert';
 import DisplayEmployee from './EmployeeDisplayerPage';
+import AnalyticsPage from './AnalyticsPage';
+import DepartmentPage from './DepartmentPage';
 
 /**
  * This file handles the rendering of content specific to different HR-related pages, 
@@ -61,14 +63,15 @@ export function HRPageContent({ pathname }: { pathname: string }) {
              </Paper>
            );
 
-           // TODO : Impliment Departement by adding <DepartmentPage />
+           // TODO :Departments feature not yet implemented : fix by adding <DepartmentPage />
            case '/Departments':
-             return <PlaceHolder PlaceHolderName={'Departments'}/>
+             return <DepartmentPage />;
+             //<PlaceHolder PlaceHolderName={'Departments'}/>
 
-           // TODO : Impliment Departement by uncommenting <AnalyticsPage /> and deleting the placeholder
+           // TODO : Implement Department by uncommenting <AnalyticsPage /> and deleting the placeholder
            case '/Analytics':
-           return  <PlaceHolder PlaceHolderName={'Analytics'} />
-           // <AnalyticsPage />;
+           return  <AnalyticsPage />;
+          // <PlaceHolder PlaceHolderName={'Analytics'} />
 
          default:
            return <Typography>No content available for {pathname}</Typography>;

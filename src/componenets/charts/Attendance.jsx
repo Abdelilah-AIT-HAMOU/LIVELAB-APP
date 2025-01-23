@@ -4,8 +4,9 @@ import useFetchData from '../../hooks/useFetchData';
 import {generateColumns, formatData } from '../../utils/formatData';
 
 export default function BasicPie() {
+// TODO : ANALTICS FEATURE , UNCOMPLETED
+  const tableName = 'WE DON T HAVE THE TABLE NAME YET';
 
-  const tableName = 'attendance';
   const { data, loading, error } = useFetchData(tableName);
   const rows = formatData(data);
   const status = rows.map(item => item.status);

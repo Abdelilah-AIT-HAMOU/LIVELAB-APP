@@ -15,7 +15,7 @@ interface CostmButtonttonProps {
 
 export default function CostmButton({ buttonName, onClick }: CostmButtonttonProps) {
   return (
-    <Button variant="contained"        sx={{ backgroundColor: 'green', '&:hover': { backgroundColor: 'darkgreen' } }}    onClick={onClick}>
+    <Button variant="contained" onClick={onClick}>
       {buttonName}
     </Button>
   );

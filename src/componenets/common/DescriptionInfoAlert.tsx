@@ -21,12 +21,8 @@ export default function DescriptionInfo({ DescriptionInfoName }: DescriptionAler
     : DescriptionInfoName;
 
   return (
-    <Stack sx={{ width: '100%' }} spacing={2}>
-      <Alert severity="info">
-        <AlertTitle sx={{ color: 'text.primary', fontSize: 20, fontWeight: 'medium' }}>
-          Page Content for {formattedName}
-        </AlertTitle>
-      </Alert>
-    </Stack>
+    <>
+
+    </>
   );
 }

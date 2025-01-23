@@ -40,7 +40,8 @@ export const NAVIGATION = [
     kind: 'page' as const,
     segment: 'Departments',
     title: 'Departments',
-    action: <Chip label={"v2"} color="primary" size="small" />,
+    //TODO : change V2 to NEW 
+    action: <Chip label={"NEW"} color="primary" size="small" />,
     icon: <ApartmentIcon />,
   },
   {
