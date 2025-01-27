@@ -53,8 +53,37 @@ const useFetchData = (tableName) => {
       throw error;
     }
   };
+  const putData = async (id, dataToUpdate) => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/connection/${tableName}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToUpdate),
+      });
+      if (!response.ok) throw new Error('Failed to update data');
+      return await response.json();
+    } catch (error) {
+      console.error('Update error:', error);
+      throw error;
+    }
+  };
 
-  return { data, loading, error, postData };
+  const deleteData = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/connection/${tableName}/${id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) throw new Error('Failed to delete data');
+      return await response.json();
+    } catch (error) {
+      console.error('Delete error:', error);
+      throw error;
+    }
+  };
+
+  return { data, loading, error, postData, putData, deleteData };
 };
+
+
 
 export default useFetchData;

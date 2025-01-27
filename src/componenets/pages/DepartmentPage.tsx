@@ -14,6 +14,7 @@ import { DataGrid, GridRowSelectionModel } from '@mui/x-data-grid';
 import React from 'react';
 import useFetchData from '../../hooks/useFetchData';
 import { formatData } from '../../utils/formatData';
+import { StyledDataGrid } from '../common/styleGrid';
 
 function DepartmentPage() {
   const tableName = 'departments';
@@ -53,19 +54,19 @@ function DepartmentPage() {
       </Paper>
 
       <Paper sx={{p: 3,width: '100%',border: '1px solid',borderColor: 'grey.300',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',borderRadius: 2 }}>
-            <Box sx={{ height: 300, width: '100%', maxWidth: 1000 }}>
-              <DataGrid
+            <Box sx={{ height: 300, width: '100%' }}>
+              <StyledDataGrid
                 rows={rows.map((row, index) => ({ ...row, id: index }))}
                 rowHeight={50}
                 columns={Object.keys(rows[0] || {}).map((key) => ({
                   field: key,
                   headerName: key.replace(/_/g, ' ').toUpperCase(),
-                  width: 150,
+                  width: 200,
                 }))}
                 disableRowSelectionOnClick
-                onRowSelectionModelChange={(newSelectionModel) => {
-                  setSelectionModel(newSelectionModel);
-                }}
+              //  onRowSelectionModelChange={(newSelectionModel) => {
+               //   setSelectionModel(newSelectionModel);
+              //  }}
               />
             </Box>
       </Paper>

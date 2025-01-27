@@ -11,10 +11,11 @@ import { DataGrid, GridColDef, GridRowSelectionModel } from '@mui/x-data-grid';
 import { AppProvider } from '@toolpad/core';
 import useFetchData from '../../hooks/useFetchData';
 import { formatData, generateColumns } from '../../utils/formatData';
+import { StyledDataGrid } from '../common/styleGrid';
 
 export default function DropRecord() {
-  const tableName = 'employees';  // You can dynamically change this as needed
-  const { data, error } = useFetchData(tableName);
+  const tableName = 'employees'; // You can dynamically change this as needed
+  const { data, error, deleteData } = useFetchData(tableName);
   const [rows, setRows] = useState<any[]>([]);
   const [selectionModel, setSelectionModel] = useState<GridRowSelectionModel>([]);
   const [feedback, setFeedback] = useState<{ open: boolean, message: string, severity: 'success' | 'error' | 'info' | 'warning' }>({ open: false, message: '', severity: 'success' });
@@ -29,18 +30,9 @@ export default function DropRecord() {
   const columns: GridColDef[] = [
     ...baseColumns,
     {
-      field: 'actions',
-      headerName: 'Actions',
-      width: 100,
+      field: 'actions',headerName: 'Actions',width: 100,
       renderCell: (params) => (
-        <Button
-          variant="text"
-          size="small"
-          onClick={(e) => {
-            e.stopPropagation();
-            handleDelete(params.row);
-          }}
-        >
+        <Button variant="text" size="small" onClick={(e) => { e.stopPropagation(); handleDelete(params.row); }}>
           Delete
         </Button>
       ),
@@ -54,31 +46,15 @@ export default function DropRecord() {
         throw new Error('No unique identifier field found in the row.');
       }
 
-      const endpointUrl = `http://localhost:3000/api/connection/${tableName}/${row[uniqueKey]}`;
-      const response = await fetch(endpointUrl, {
-        method: 'DELETE',
-      });
+      await deleteData(`${row[uniqueKey]}`);
 
-      if (!response.ok) {
-        throw new Error(`Failed to delete record with ID: ${row[uniqueKey]}`);
-      }
-
-      // Update the local rows dynamically
       const updatedRows = rows.filter((item) => item[uniqueKey] !== row[uniqueKey]);
       setRows(updatedRows);
 
-      setFeedback({
-        open: true,
-        message: `Record with ID: ${row[uniqueKey]} deleted successfully`,
-        severity: 'success',
-      });
-    } catch (error) {
+      setFeedback({open: true, message: `Record with ID: ${row[uniqueKey]} deleted successfully`,severity: 'success', });
+    } catch (error: any) {
       console.error('Failed to delete:', error);
-      setFeedback({
-        open: true,
-        message: `Failed to delete record: ${error.message}`,
-        severity: 'error',
-      });
+      setFeedback({ open: true, message: `Failed to delete record: ${error.message}`, severity: 'error',});
     }
   };
 
@@ -89,19 +65,12 @@ export default function DropRecord() {
         throw new Error('No unique identifier field found in the rows.');
       }
 
-      // Create an array of delete promises
+      // Use deleteData to delete records in bulk
       const deletePromises = selectionModel.map((id) => {
         const record = rows.find((row) => row[uniqueKey] === id);
-        if (record) {
-          const endpointUrl = `http://localhost:3000/api/connection/${tableName}/${record[uniqueKey]}`;
-          return fetch(endpointUrl, {
-            method: 'DELETE',
-          });
-        }
-        return null;
+        return record ? deleteData(`${record[uniqueKey]}`) : null;
       }).filter(Boolean);
 
-      // Wait for all delete operations to complete
       await Promise.all(deletePromises);
 
       // Update rows state to remove deleted records
@@ -113,7 +82,7 @@ export default function DropRecord() {
         message: 'Selected records deleted successfully',
         severity: 'success',
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to delete records:', error);
       setFeedback({
         open: true,
@@ -130,7 +99,7 @@ export default function DropRecord() {
   return (
       <Paper sx={{ p: 3, width: '100%' }}>
         <Box sx={{ height: 400, width: '100%' }}>
-          <DataGrid
+          <StyledDataGrid
             rows={rows}
             columns={columns}
             getRowId={(row) => row.employee_id}  
