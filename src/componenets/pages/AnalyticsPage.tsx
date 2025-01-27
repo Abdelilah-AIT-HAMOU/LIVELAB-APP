@@ -9,7 +9,7 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import AttendanceChart from '../charts/Attendance';
+import AttendanceChart from '../charts/AttendanceChart';
 import EmployeesPerDepartmentChart from '../charts/EmployeesPerDepartmentChart';
 import PerformancePieChart from '../charts/PerformanceReview';
 

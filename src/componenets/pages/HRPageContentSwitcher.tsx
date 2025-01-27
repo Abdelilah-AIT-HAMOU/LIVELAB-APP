@@ -70,8 +70,7 @@ export function HRPageContent({ pathname }: { pathname: string }) {
 
            // TODO : Implement Department by uncommenting <AnalyticsPage /> and deleting the placeholder
            case '/Analytics':
-           return  <AnalyticsPage />;
-          // <PlaceHolder PlaceHolderName={'Analytics'} />
+           return  <PlaceHolder PlaceHolderName={'Analytics'}/>;
 
          default:
            return <Typography>No content available for {pathname}</Typography>;

@@ -3,7 +3,7 @@ import { PieChart } from '@mui/x-charts/PieChart';
 import useFetchData from '../../hooks/useFetchData';
 import {generateColumns, formatData } from '../../utils/formatData';
 
-export default function BasicPie() {
+export default function AttendanceChart() {
 // TODO : ANALTICS FEATURE , UNCOMPLETED
   const tableName = 'WE DON T HAVE THE TABLE NAME YET';
 
