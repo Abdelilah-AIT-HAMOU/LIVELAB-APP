@@ -53,8 +53,7 @@ export default function DropRecord() {
 
       setFeedback({open: true, message: `Record with ID: ${row[uniqueKey]} deleted successfully`,severity: 'success', });
     } catch (error: any) {
-      console.error('Failed to delete:', error);
-      setFeedback({ open: true, message: `Failed to delete record: ${error.message}`, severity: 'error',});
+       setFeedback({ open: true, message: `Failed to delete record: ${error.message}`, severity: 'error',});
     }
   };
 
@@ -83,8 +82,7 @@ export default function DropRecord() {
         severity: 'success',
       });
     } catch (error: any) {
-      console.error('Failed to delete records:', error);
-      setFeedback({
+       setFeedback({
         open: true,
         message: `Failed to delete records: ${error.message}`,
         severity: 'error',

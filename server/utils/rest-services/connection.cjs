@@ -30,8 +30,7 @@ exports.fetchData = async function (query) {
         // Return the fetched rows
         return result.rows;
     } catch (error) {
-        console.error('Error executing query:', error);
-        throw new Error('Failed to fetch data from the database');
+         throw new Error('Failed to fetch data from the database');
     } finally {
         // Ensure the connection is closed
         if (connection) {

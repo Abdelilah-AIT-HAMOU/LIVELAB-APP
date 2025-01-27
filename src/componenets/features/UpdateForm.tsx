@@ -74,8 +74,7 @@ export default function AlterTable() {
 
       handleEditClose();
     } catch (error) {
-      console.error('Failed to update:', error);
-      setFeedback({ open: true, message: `Failed to update record: ${error.message}`, severity: 'error',});
+       setFeedback({ open: true, message: `Failed to update record: ${error.message}`, severity: 'error',});
     }
   };
 
@@ -102,8 +101,7 @@ export default function AlterTable() {
         severity: 'success',
       });
     } catch (error) {
-      console.error('Failed to update records:', error);
-      setFeedback({
+       setFeedback({
         open: true,
         message: 'Failed to update records',
         severity: 'error',

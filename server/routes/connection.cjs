@@ -12,8 +12,8 @@ const router = express.Router();
 require('dotenv').config(); // To read .env variables
 
 // env variables
-const BASE_URL = process.env.BASE_URL;
-const DATABASE_USERNAME = process.env.DB_USERNAME;
+const BASE_URL = process.env.VITE_BASE_URL;
+const DATABASE_USERNAME = process.env.VITE_DB_USERNAME;
 
 const getTableUrl = (tableName) => {
     const baseUrl = BASE_URL.endsWith('/') ? BASE_URL.slice(0, -1) : BASE_URL;
@@ -38,7 +38,6 @@ tables.forEach((table) => {
     // POST 
     router.post(`/${table}`, async (req, res) => {
         try {
-            console.log("urrl >>>>"+ getTableUrl(table));
             const response = await fetch(getTableUrl(table), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -69,8 +68,6 @@ tables.forEach((table) => {
             const baseUrl = getTableUrl(table);
             const url = `${baseUrl.slice(0, -1)}/${req.params.id}`;
 
-            console.log('Making PUT request to:', url);
-            console.log('With body:', req.body);
 
             const response = await fetch(url, {
                 method: 'PUT',
@@ -83,15 +80,12 @@ tables.forEach((table) => {
 
             if (!response.ok) {
                 const text = await response.text();
-                console.error('Error response:', text);
                 throw new Error(`API request failed with status ${response.status}`);
             }
 
             const data = await response.json();
-            console.log('Success response:', data);
             res.status(200).json(data);
         } catch (error) {
-            console.error('Error in PUT route:', error);
             res.status(500).json({ 
                 error: error.message,
                 details: 'Failed to update record'
@@ -104,21 +98,18 @@ tables.forEach((table) => {
         try {
             const baseUrl = getTableUrl(table).replace(/\/$/, '');
             const url = `${baseUrl}/${req.params.id}`;
-            console.log('Making DELETE request to:', url);
 
             const response = await fetch(url, { method: 'DELETE' });
 
             if (!response.ok) {
                 const text = await response.text(); // Read error message if available
-                console.error('Error response:', text);
-                throw new Error(`Failed to delete record: ${response.status} - ${text}`);
+                 throw new Error(`Failed to delete record: ${response.status} - ${text}`);
             }
 
             res.status(200).json({ message: `Record with ID ${req.params.id} deleted successfully` });
 
         } catch (error) {
-            console.error('Error in DELETE route:', error);
-            res.status(500).json({
+             res.status(500).json({
                 error: error.message,
                 details: `Failed to delete record with ID ${req.params.id}`,
             });

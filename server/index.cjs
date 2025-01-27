@@ -6,31 +6,37 @@
 */
 const express = require('express');
 const bodyParser = require('body-parser');
-const morgan = require('morgan')
+const morgan = require('morgan');
+const cors = require('cors');
+const path = require('path');
+
 const app = express();
-const cors = require('cors')
 const port = 3000;
 
-app.use(cors())
-
-app.use(morgan('tiny'))
+app.use(cors());
+app.use(morgan('tiny'));
 app.use(bodyParser.json());
 
+// Serve static files from the React app (production build)
+app.use(express.static(path.join(__dirname, '../../dist')));
+
 // Routes
-const routes = require( './routes/connection.cjs' );
+const routes = require('./routes/connection.cjs');
+app.use('/api/connection', routes);
 
-app.use( '/api/connection', routes );
+// Serve React app for all other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../dist/index.html'));
+});
 
-app.use(express.static('public'));
-
+// Error handler
 app.use((err, req, res, next) => {
-    console.log(err.message);
-    res.status(500).send({
-        errorCode: err.code,
-        errorMessage: err.message
-    } );
-} );
+  res.status(500).send({
+    errorCode: err.code,
+    errorMessage: err.message,
+  });
+});
 
-app.listen( port, () => {
-    console.log( `App listening on port ${ port }` );
-} );
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});

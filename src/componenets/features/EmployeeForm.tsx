@@ -42,8 +42,7 @@ export default function DynamicForm() {
       });
       setFormData({});
     } catch (error) {
-      console.error('Error during form submission:', error);
-      setFeedback({
+       setFeedback({
         open: true,
         message: `Failed to add record: ${error.message}`,
         severity: 'error',

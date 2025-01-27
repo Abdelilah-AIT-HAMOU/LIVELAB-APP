@@ -25,10 +25,8 @@ class DBConnector {
                     poolMax: 10,
                     poolMin: 10
                 });
-                console.log('Connection pool created successfully.');
-            } catch (error) {
-                console.error('Error creating connection pool:', error);
-                throw error;
+             } catch (error) {
+                 throw error;
             }
         }
     }
@@ -42,8 +40,7 @@ class DBConnector {
             });
             return connection;
         } catch (error) {
-            console.error('Error getting connection:', error);
-            throw error;
+             throw error;
         }
     }
 }

@@ -11,19 +11,20 @@ const useFetchData = (tableName) => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/connection/${tableName}/`);
+        const response = await fetch(`${API_URL}/${tableName}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.message}`);
         }
         const result = await response.json();
         setData(result);
       } catch (error) {
-        console.error('Fetch error:', error);
-        setError(error);
+         setError(error);
       } finally {
         setLoading(false);
       }
@@ -33,9 +34,8 @@ const useFetchData = (tableName) => {
   }, [tableName]);
 
   const postData = async (dataToPost) => {
-    console.log('Data to post:', dataToPost);
-    try {
-      const response = await fetch(`http://localhost:3000/api/connection/${tableName}/`, {
+     try {
+      const response = await fetch(`${API_URL}/${tableName}/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,18 +44,16 @@ const useFetchData = (tableName) => {
       });
       if (!response.ok) {
         const errorData = await response.json();
-        console.error('API error:', errorData);
-        throw new Error(errorData.message || 'Failed to post data');
+         throw new Error(errorData.message || 'Failed to post data');
       }
       return await response.json();
     } catch (error) {
-      console.error('Post error:', error);
-      throw error;
+       throw error;
     }
   };
   const putData = async (id, dataToUpdate) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/connection/${tableName}/${id}`, {
+      const response = await fetch(`${API_URL}/${tableName}/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToUpdate),
@@ -63,21 +61,19 @@ const useFetchData = (tableName) => {
       if (!response.ok) throw new Error('Failed to update data');
       return await response.json();
     } catch (error) {
-      console.error('Update error:', error);
-      throw error;
+       throw error;
     }
   };
 
   const deleteData = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/connection/${tableName}/${id}`, {
+      const response = await fetch(`${API_URL}/${tableName}/${id}`, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error('Failed to delete data');
       return await response.json();
     } catch (error) {
-      console.error('Delete error:', error);
-      throw error;
+       throw error;
     }
   };
 

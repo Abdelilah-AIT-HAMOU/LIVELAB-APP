@@ -27,8 +27,7 @@ export default function DisplayEmployee() {
     return <div>Error: {error}</div>;
   }
 
-  console.log('Rows:', rows);
-
+ 
   return (
     <Paper sx={{ p: 3, width: '100%', border: '1px solid', borderColor: 'grey.300', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: 2 }}>
       <Box sx={{ width: '100%' }}>

@@ -29,8 +29,7 @@ import DepartmentPage from './DepartmentPage';
 
 
 export function HRPageContent({ pathname }: { pathname: string }) {
-    console.log(pathname);
-
+ 
     const [activeComponent, setActiveComponent] = useState<string>('add');
     const handleButtonClick = (componentName: string) => {setActiveComponent(componentName);};
 
