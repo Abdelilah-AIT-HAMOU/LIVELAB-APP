@@ -49,7 +49,7 @@ export default function HrDashboard(props: DemoProps) {
     <AppProvider
       navigation={NAVIGATION}
       branding={{
-        logo: <img src="../../../public/assets/RMIL_Buildings_Medium-Business_Air_RGB.png"/>,
+        logo: <img src="../../../public/assets/logo-blue.png"/>,
         title: 'HR MANAGEMENT',
         homeUrl: '/',
       }}
