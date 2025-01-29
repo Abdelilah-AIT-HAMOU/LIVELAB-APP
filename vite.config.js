@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     server: {
-      port: 5000, 
+      port: 5000,
       proxy: {
         '/api': 'http://localhost:5000', // Proxy API calls to backend
       },
