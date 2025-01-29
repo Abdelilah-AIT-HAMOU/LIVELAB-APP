@@ -13,6 +13,10 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+
 app.use(cors());
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
@@ -35,8 +39,4 @@ app.use((err, req, res, next) => {
     errorCode: err.code,
     errorMessage: err.message,
   });
-});
-
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
 });

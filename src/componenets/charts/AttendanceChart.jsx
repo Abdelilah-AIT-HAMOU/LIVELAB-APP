@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
 import useFetchData from '../../hooks/useFetchData';
-import {generateColumns, formatData } from '../../utils/formatData';
+import { formatData } from '../../utils/formatData';
 
 export default function AttendanceChart() {
 // TODO : ANALTICS FEATURE , UNCOMPLETED
