@@ -24,7 +24,7 @@ const useFetchData = (tableName) => {
         const result = await response.json();
         setData(result);
       } catch (error) {
-         setError(error);
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -48,7 +48,8 @@ const useFetchData = (tableName) => {
       }
       return await response.json();
     } catch (error) {
-       throw error;
+      setError(error.message);
+      throw error;
     }
   };
   const putData = async (id, dataToUpdate) => {
@@ -61,7 +62,8 @@ const useFetchData = (tableName) => {
       if (!response.ok) throw new Error('Failed to update data');
       return await response.json();
     } catch (error) {
-       throw error;
+      setError(error.message);
+      throw error;
     }
   };
 
@@ -73,7 +75,8 @@ const useFetchData = (tableName) => {
       if (!response.ok) throw new Error('Failed to delete data');
       return await response.json();
     } catch (error) {
-       throw error;
+      setError(error.message);
+      throw error;
     }
   };
 

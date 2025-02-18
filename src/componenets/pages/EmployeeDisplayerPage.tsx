@@ -36,12 +36,12 @@ export default function DisplayEmployee() {
         </Stack>
         <div style={{ height: 500, width: '100%' }}>
           <StyledDataGrid 
-            rows={rows || []}
+            rows={rows}
             columns={columns}
             loading={loading}
-            paginationModel={{ pageSize: nbRows, page: 0 }}
             getRowId={(row) => row.employee_id}
-          />
+            disableRowSelectionOnClick
+            />
         </div>
         <br />
       </Box>
