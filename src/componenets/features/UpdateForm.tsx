@@ -126,22 +126,22 @@ export default function AlterTable() {
          <Dialog open={editDialog} onClose={handleEditClose}>
           <DialogTitle>Edit Employee</DialogTitle>
           <DialogContent>
-            {editRow && Object.keys(editRow).map((field) => {
-            if (field === 'employee_id' || field === 'actions') return null;
-              return (
-                <TextField
-                  key={field}
-                  margin="dense"
-                  label={field.charAt(0).toUpperCase() + field.slice(1).replace('_', ' ')}
-                  type="text"
-                  fullWidth
-                  variant="outlined"
-                  value={editRow[field] || ''}
-                  onChange={(e) => handleFieldChange(field, e.target.value)}
-                />
-              );
-            })}
-          </DialogContent>
+  {editRow && Object.keys(editRow).map((field) => {
+    if (field === 'id' || field === 'employee_id' || field === 'actions') return null; // Hide employee_id
+    return (
+      <TextField
+        key={field}
+        margin="dense"
+        label={field.charAt(0).toUpperCase() + field.slice(1).replace('_', ' ')}
+        type="text"
+        fullWidth
+        variant="outlined"
+        value={editRow[field] || ''}
+        onChange={(e) => handleFieldChange(field, e.target.value)}
+      />
+    );
+  })}
+</DialogContent>
           <DialogActions>
             <Button onClick={handleEditClose}>Cancel</Button>
             <Button onClick={handleEditSave} variant="contained">Save</Button>
