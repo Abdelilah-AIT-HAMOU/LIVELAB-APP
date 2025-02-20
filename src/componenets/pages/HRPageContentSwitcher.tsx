@@ -53,7 +53,7 @@ export function HRPageContent({ pathname }: { pathname: string }) {
            case '/UpdateRecords':
            return (
              <Paper sx={{   p: 3,   width: '100%',   border: '1px solid',   borderColor: 'grey.300',   boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',   borderRadius: 2}}>
-               <Grid  spacing={2} container direction="row" justifyContent="center" alignItems="center" mb={3}> 
+               <Grid  spacing={2} container direction="row" justifyContent="center" alignItems="center" mb={3}>
                  <CostmButton buttonName='Add'onClick={() => handleButtonClick('add')}/>
                  <CostmButton  buttonName='Update'  onClick={() => handleButtonClick('alter')}/>
                  <CostmButton buttonName='Delete'onClick={() => handleButtonClick('drop')}/>
@@ -64,10 +64,10 @@ export function HRPageContent({ pathname }: { pathname: string }) {
 
            // TODO :Departments feature not yet implemented : fix by adding <DepartmentPage />
            case '/Departments':
-             return <DepartmentPage />;
-             //<PlaceHolder PlaceHolderName={'Departments'}/>
+             return <PlaceHolder PlaceHolderName={'Departments'}/>
+            // <DepartmentPage />;
 
-           // TODO : Implement Department by uncommenting <AnalyticsPage /> and deleting the placeholder
+            // TODO : Implement Department by uncommenting <AnalyticsPage /> and deleting the placeholder
            case '/Analytics':
            return  <PlaceHolder PlaceHolderName={'Analytics'}/>;
 

@@ -41,7 +41,7 @@ export const NAVIGATION = [
     segment: 'Departments',
     title: 'Departments',
     //TODO : change V2 to NEW 
-    action: <Chip label={"NEW"} color="primary" size="small" />,
+    action: <Chip label={"V2"} color="primary" size="small" />,
     icon: <ApartmentIcon />,
   },
   {
@@ -55,6 +55,7 @@ export const NAVIGATION = [
     kind: 'page' as const,
     segment: 'Analytics',
     title: 'Analytics',
+    //TODO : change V3 to NEW 
     action: <Chip label={"v3"} color="primary" size="small" />,
     icon: <AnalyticsIcon />, 
   },
