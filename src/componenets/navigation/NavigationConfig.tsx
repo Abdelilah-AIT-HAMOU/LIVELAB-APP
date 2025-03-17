@@ -56,7 +56,7 @@ export const NAVIGATION = [
     segment: 'Analytics',
     title: 'Analytics',
     //TODO : change V3 to NEW 
-    action: <Chip label={"v3"} color="primary" size="small" />,
+    action: <Chip label={"V3"} color="primary" size="small" />,
     icon: <AnalyticsIcon />, 
   },
 ];

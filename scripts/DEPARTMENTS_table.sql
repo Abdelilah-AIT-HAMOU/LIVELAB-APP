@@ -1,11 +1,17 @@
-
-CREATE TABLE DEV_USER.DEPARTMENTS (
-    department_id   NUMBER PRIMARY KEY,               -- Department ID (Primary Key)
-    department_name VARCHAR2(100) NOT NULL,           -- Department Name (Not Null)
-    description     VARCHAR2(255),                    -- Description (Optional)
-    manager_id      NUMBER,                           -- Manager ID (can reference an employee_id)
-    location        VARCHAR2(100),                    -- Location (Optional)
-    CONSTRAINT fk_manager FOREIGN KEY (manager_id)   -- Foreign Key Constraint
-        REFERENCES DEV_USER.EMPLOYEES(employee_id)   -- Refers to employee_id in EMPLOYEES table
+CREATE TABLE DEPARTMENTS (
+    department_id   NUMBER PRIMARY KEY,
+    department_name VARCHAR2(100) NOT NULL,
+    description     VARCHAR2(255),
+    location        VARCHAR2(100),
+    manager_id      NUMBER
 );
 
+
+INSERT INTO DEPARTMENTS (department_id, department_name, description,  location)
+VALUES (1, 'HR', 'Responsible for managing employee relations, benefits, and recruitment.',  'New York');
+
+INSERT INTO DEPARTMENTS (department_id, department_name, description,  location)
+VALUES (2, 'IT', 'Responsible for the development of products and technical solutions.',  'Chicago');
+
+INSERT INTO DEPARTMENTS (department_id, department_name, description,  location)
+VALUES (3, 'Sales', 'Oversees customer acquisition, product sales, and client relationships.', 'Los Angeles');

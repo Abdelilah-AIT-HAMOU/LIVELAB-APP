@@ -62,14 +62,17 @@ export function HRPageContent({ pathname }: { pathname: string }) {
              </Paper>
            );
 
-           // TODO :Departments feature not yet implemented : fix by adding <DepartmentPage />
+           // TODO : Implement Department feature by uncommenting <DepartmentPage /> and deleting the placeholder
            case '/Departments':
-             return <PlaceHolder PlaceHolderName={'Departments'}/>
-            // <DepartmentPage />;
+              return <PlaceHolder PlaceHolderName={'Departments'}/>;
+             //return <DepartmentPage />;
 
-            // TODO : Implement Department by uncommenting <AnalyticsPage /> and deleting the placeholder
+
+           // TODO : Implement Analytics feature by uncommenting <AnalyticsPage /> and deleting the placeholder
            case '/Analytics':
-           return  <PlaceHolder PlaceHolderName={'Analytics'}/>;
+              return <PlaceHolder PlaceHolderName={'Analytics'}/>;
+             //return <AnalyticsPage />;
+
 
          default:
            return <Typography>No content available for {pathname}</Typography>;

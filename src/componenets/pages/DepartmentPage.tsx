@@ -39,16 +39,16 @@ function DepartmentPage() {
       <Paper sx={{p: 3,width: '100%',border: '1px solid',borderColor: 'grey.300',boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',borderRadius: 2 }}>
         <Grid container spacing={3}>
           <Grid size={3}>
-            <DepartementCards title="Total Departments" value={totalDepartments} color="#ADF0E6"/>
+            <DepartementCards title="Total Departments" value={totalDepartments} color="#90CAF9"/>
           </Grid>
           <Grid size={3}>
             <DepartementCards title="Departments with Managers" value={departmentsWithManagers} color="rgba(255, 204, 204, 1)"/>
           </Grid>
           <Grid size={3}>
-            <DepartementCards title="Unique Locations" value={uniqueLocations} color="#90EE90"/>
+            <DepartementCards title="Unique Locations" value={uniqueLocations} color="#A5D6A7"/>
           </Grid>
           <Grid size={3}>
-            <DepartementCards title="Other Stat" value={0} /> {/* not implim yet */}
+            <DepartementCards title="More Other Statistics" value={0} color="#FFCC80"/> {/* not implim yet */}
           </Grid>
         </Grid>
       </Paper>

@@ -14,10 +14,10 @@ import {NAVIGATION} from '../navigation/NavigationConfig'
 import { HRPageContent } from './HRPageContentSwitcher';
 
 /**
- * This file represents the main dashboard layout of the HR application. It serves 
- * as the entry point or root component for the HR dashboard, managing the overall theme, 
+ * This file represents the main dashboard layout of the HR application. It serves
+ * as the entry point or root component for the HR dashboard, managing the overall theme,
  * layout, and routing.
- * 
+ *
  */
 
 interface DemoProps {

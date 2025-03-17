@@ -20,10 +20,10 @@ function AnalyticsPage() {
           <Paper  sx={{ p: 2, textAlign: 'center', display: 'flex',    flexDirection: 'column',    justifyContent: 'center',    alignItems: 'center',    height: 300,  }}  elevation={3}>
 
             <Typography variant="h6" component="div" gutterBottom>
-              Employees per Department
+              Performance Score Distribution
             </Typography>
 
-            <EmployeesPerDepartmentChart />
+            <PerformancePieChart />
           </Paper>
         </Grid>
 
@@ -41,10 +41,10 @@ function AnalyticsPage() {
           <Paper   sx={{     p: 2,     textAlign: 'center',     display: 'flex',     flexDirection: 'column',     justifyContent: 'center',     alignItems: 'center',     height: 300,    }}   elevation={3} >
 
             <Typography variant="h6" component="div" gutterBottom>
-              Performance Score Distribution
+              Employees per Department
             </Typography>
 
-            <PerformancePieChart />
+            <EmployeesPerDepartmentChart />
 
           </Paper>
         </Grid>

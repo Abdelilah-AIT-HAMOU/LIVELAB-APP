@@ -5,7 +5,7 @@ import { formatData } from '../../utils/formatData';
 
 export default function PerformancePieChart() {
 // TODO : ANALTICS FEATURE , UNCOMPLETED
-  const tableName = 'WE DON T HAVE THE TABLE NAME YET';
+  const tableName = 'performancereviews';
 
   const { data, loading, error } = useFetchData(tableName);
   const rows = formatData(data);

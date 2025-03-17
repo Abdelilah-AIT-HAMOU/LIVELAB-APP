@@ -5,7 +5,7 @@ import { formatData } from '../../utils/formatData';
 
 export default function AttendanceChart() {
 // TODO : ANALTICS FEATURE , UNCOMPLETED
-  const tableName = 'WE DON T HAVE THE TABLE NAME YET';
+  const tableName = 'attendance';
 
   const { data, loading, error } = useFetchData(tableName);
   const rows = formatData(data);
@@ -26,9 +26,9 @@ export default function AttendanceChart() {
       series={[
         {
           data: [
-            { id: 0, value: presentCount, label: 'Presence' },
-            { id: 1, value: absentCount, label: 'Absence' },
-          ],
+          { id: 0, value: presentCount, label: 'Presence' },
+          { id: 1, value: absentCount, label: 'Absence' },
+        ],
         },
       ]}
       width={390}

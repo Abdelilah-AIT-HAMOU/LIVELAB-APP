@@ -27,7 +27,7 @@ export default function EmployeesPerDepartmentChart() {
         const employeeCounts = [];
 
         dep_rows.forEach((department) => {
-          const departmentName = department.name;
+          const departmentName = department.department_name;
           const count = departmentCounts[department.department_id] || 0;
           departmentNames.push(departmentName);
           employeeCounts.push(count);
@@ -46,9 +46,9 @@ export default function EmployeesPerDepartmentChart() {
   return (
     <BarChart
       xAxis={[{ scaleType: 'band', data: chartData.departmentNames }]}
-      series={[{ data: chartData.employeeCounts, label: 'Number of Employees', color: '#FFB6C1' }]}
-      width={360}
-      height={230}
+      series={[{ data: chartData.employeeCounts, label: 'Number of Employees', color: '#1565C0' }]}
+      width={500}
+      height={300}
     />
   );
 }
